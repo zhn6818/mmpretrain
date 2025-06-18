@@ -102,7 +102,7 @@ default_hooks = dict(
     param_scheduler=dict(type='ParamSchedulerHook'),
 
     # save checkpoint per epoch.
-    checkpoint=dict(type='CheckpointHook', interval=1),
+    checkpoint=dict(type='CheckpointHook', interval=10, save_best='auto'),
 
     # set sampler seed in distributed evrionment.
     sampler_seed=dict(type='DistSamplerSeedHook'),
@@ -138,3 +138,8 @@ resume = False
 
 # Defaults to use random seed and disable `deterministic`
 randomness = dict(seed=None, deterministic=False)
+
+# 注册自定义hook，保存完整模型结构和权重
+custom_hooks = [
+    dict(type='SaveFullModelHook'),
+]
