@@ -10,11 +10,10 @@ from .swav_hook import SwAVHook
 from .switch_recipe_hook import SwitchRecipeHook
 from .visualization_hook import VisualizationHook
 from .warmup_param_hook import WarmupParamHook
-from .save_fullmodel_hook import SaveFullModelHook
 
 __all__ = [
     'ClassNumCheckHook', 'PreciseBNHook', 'VisualizationHook',
     'SwitchRecipeHook', 'PrepareProtoBeforeValLoopHook',
     'SetAdaptiveMarginsHook', 'EMAHook', 'SimSiamHook', 'DenseCLHook',
-    'SwAVHook', 'WarmupParamHook', 'SaveFullModelHook'
+    'SwAVHook', 'WarmupParamHook'
 ]

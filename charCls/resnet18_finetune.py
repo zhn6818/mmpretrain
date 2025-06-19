@@ -18,6 +18,8 @@ model = dict(
     init_cfg=dict(type='Pretrained', checkpoint='https://download.openmmlab.com/mmclassification/v0/resnet/resnet18_8xb32_in1k_20210831-fbbb1da6.pth')
 )
 
+# 任务类型配置
+task_type = 'classification'  # 可选值: 'classification', 'segmentation', 'detection' 等
 
 # dataset settings
 dataset_type = 'CustomDataset'
@@ -140,6 +142,7 @@ resume = False
 randomness = dict(seed=None, deterministic=False)
 
 # 注册自定义hook，保存完整模型结构和权重
+# 注意：这里使用的是devdeploy中的SaveFullModelHook，与mmpretrain独立
 custom_hooks = [
     dict(type='SaveFullModelHook'),
 ]
