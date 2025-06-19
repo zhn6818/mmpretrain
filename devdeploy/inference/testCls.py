@@ -40,33 +40,19 @@ def test_single_image_inference():
     print(f"找到 {len(test_images)} 张测试图片")
     print("-" * 60)
     
-    # 测试前3张图片的单张推理
+    # 测试所有图片的单张推理
     for i, img_name in enumerate(test_images):
         img_path = os.path.join(IMG_DIR, img_name)
-        print(f"\n测试图片 {i+1}: {img_name}")
-        print(f"图片路径: {img_path}")
         
         try:
             # 单张图片推理
             result = infer.infer_single(img_path, return_prob=True)
             
-            # 打印详细结果
-            print(f"预测类别ID: {result['class_id']}")
-            print(f"预测类别名称: {result['class_name']}")
-            print(f"置信度: {result['confidence']:.4f}")
-            
-            # 如果有概率分布，显示所有类别的概率
-            if 'probabilities' in result:
-                print("所有类别概率分布:")
-                for class_id, prob in enumerate(result['probabilities']):
-                    class_name = infer._get_class_name(class_id)
-                    print(f"  {class_name}: {prob:.4f}")
-            
-            print("-" * 40)
+            # 打印结果
+            print(f'class_id: {result["class_id"]}  class_name: {result["class_name"]} 置信度: {result["confidence"]:.3f}      {img_name}')
             
         except Exception as e:
-            print(f"推理失败: {str(e)}")
-            print("-" * 40)
+            print(f"推理失败 {img_name}: {str(e)}")
 
 def test_top_k_predictions():
     """测试top-k预测功能"""
