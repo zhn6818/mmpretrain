@@ -10,8 +10,8 @@ import os
 import torch
 from typing import Dict, Any, Optional, Union, List
 from mmengine.logging import MMLogger
-from mmengine.registry import MODELS
-from mmengine.config import Config
+# from mmengine.registry import MODELS
+# from mmengine.config import Config
 
 
 class FullModelLoader:
