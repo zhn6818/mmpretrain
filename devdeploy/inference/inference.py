@@ -1,12 +1,12 @@
 import os
-from devdeploy.inference.class_infer import ClassInfer
+from devdeploy.inference.class_infer import Inference
 
 # 模型路径和图片目录
 CHECKPOINT_PATH = 'charCls/works/fullmodel_best.pth'
 IMG_DIR = 'data/classify/val/25'
 
 # 创建推理器实例
-infer = ClassInfer(CHECKPOINT_PATH, device='cpu', class_names=['20', '25', '50'])
+infer = Inference(CHECKPOINT_PATH, device='cpu', class_names=['20', '25', '50'])
 
 # 批量推理
 results = infer.infer_batch(IMG_DIR)
