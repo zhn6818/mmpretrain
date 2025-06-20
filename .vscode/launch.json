@@ -23,7 +23,12 @@
                 "--work-dir=charCls/works/swin_transformer"
             ],
             "console": "integratedTerminal",
-            "justMyCode": false
+            "justMyCode": false,
+            "env": {
+                "OMP_NUM_THREADS": "1",
+                "MKL_NUM_THREADS": "1",
+                "PYTORCH_CUDA_ALLOC_CONF": "max_split_size_mb:32"
+            }
         },
         {
             "name": "Analyze Results",
