@@ -3,7 +3,8 @@ from devdeploy.inference.inference import Inference
 from PIL import Image
 
 # 模型路径和图片目录
-CHECKPOINT_PATH = 'charCls/works/fullmodel_best.pth'
+# CHECKPOINT_PATH = 'charCls/works/fullmodel_best.pth'
+CHECKPOINT_PATH = 'charCls/works/swin_transformer/fullmodel_best.pth'
 IMG_DIR = 'data/classify/val/25'
 
 # 创建推理器实例

@@ -7,7 +7,7 @@ from mmpretrain.registry import MODELS
 from mmengine.runner import load_checkpoint
 
 # 路径
-CONFIG_PATH = 'charCls/resnet18_finetune.py'
+# CONFIG_PATH = 'charCls/resnet18_finetune.py'
 CHECKPOINT_PATH = 'charCls/works/fullmodel_epoch50.pth'
 IMG_DIR = 'data/classify/val/20'
 

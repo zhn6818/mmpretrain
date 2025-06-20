@@ -312,6 +312,87 @@ If you find this project useful in your research, please consider cite:
 
 This project is released under the [Apache 2.0 license](LICENSE).
 
+## 项目特定功能
+
+### DevDeploy 推理模块
+
+本项目包含一个独立的推理模块 `devdeploy`，提供了完整的模型加载和推理功能，与 mmpretrain 完全分离。
+
+#### 主要功能
+
+1. **FullModelLoader**: 完整模型加载器
+   - 加载由 SaveFullModelHook 保存的完整模型
+   - 包含模型结构、权重和配置信息
+   - 支持任务类型、数据预处理器、测试流水线等配置
+
+2. **Inference**: 通用推理类
+   - 支持图像分类和分割任务
+   - 自动处理模型加载和预处理
+   - 支持单张图片和批量推理
+
+3. **SaveFullModelHook**: 完整模型保存钩子
+   - 在训练过程中保存完整模型
+   - 包含所有必要的配置信息
+
+#### 最近修复
+
+**Swin Transformer 小尺寸特征图问题修复** (2024-12-20)
+
+**问题描述**: 
+```
+The input shape (7, 7) is smaller than the window size (12). Please set `pad_small_map=True`, or decrease the `window_size`.
+```
+
+**解决方案**:
+1. 在 Swin Transformer 配置中添加 `pad_small_map=True` 参数
+2. 修改文件: `charCls/swin_transformer/swin_transformer_finetune.py`
+3. 添加了全局和局部的 `pad_small_map` 配置
+
+**修改内容**:
+```python
+backbone=dict(
+    type='SwinTransformer',
+    arch='base',
+    img_size=384,
+    pad_small_map=True,  # 添加全局配置
+    stage_cfgs=dict(block_cfgs=dict(window_size=12, pad_small_map=True))),  # 添加局部配置
+```
+
+**测试验证**:
+- 创建了测试脚本 `devdeploy/inference/test_fix.py`
+- 验证小尺寸图像处理功能
+- 确保推理功能正常工作
+
+#### 使用方法
+
+```python
+# 使用推理器
+from devdeploy.inference import Inference
+
+# 创建推理器实例
+inferencer = Inference('charCls/works/fullmodel_best.pth', device='cpu')
+
+# 单张图片推理
+result = inferencer.infer_single('image.jpg')
+print(f"预测类别: {result['class_name']}, 置信度: {result['confidence']:.3f}")
+
+# 批量推理
+results = inferencer.infer_batch('image_folder/')
+```
+
+#### 文件结构
+
+```
+devdeploy/
+├── inference/
+│   ├── fullmodel_loader.py      # 完整模型加载器
+│   ├── inference.py             # 通用推理类
+│   ├── test_fix.py              # 修复测试脚本
+│   └── README.md                # 推理模块说明
+└── hook/
+    └── save_fullmodel_hook.py   # 完整模型保存钩子
+```
+
 ## Projects in OpenMMLab
 
 - [MMEngine](https://github.com/open-mmlab/mmengine): OpenMMLab foundational library for training deep learning models.

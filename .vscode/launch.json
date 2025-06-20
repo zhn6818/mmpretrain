@@ -19,8 +19,8 @@
             "request": "launch",
             "program": "${workspaceFolder}/tools/train.py",
             "args": [
-                "charCls/swin_transformer/swin_transformer_finetune.py",
-                "--work-dir=charCls/works/swin_transformer"
+                "charCls/swin_transformer/swin_transformer_tiny_images.py",
+                "--work-dir=charCls/works/swin_transformer_tiny"
             ],
             "console": "integratedTerminal",
             "justMyCode": false,
