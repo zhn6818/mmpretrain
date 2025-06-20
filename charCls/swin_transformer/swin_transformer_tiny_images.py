@@ -6,7 +6,7 @@ model = dict(
     neck=dict(type='GlobalAveragePooling'),
     head=dict(
         type='LinearClsHead',
-        num_classes=1000,
+        num_classes=3,
         in_channels=768,
         init_cfg=None,  # suppress the default init_cfg of LinearClsHead.
         loss=dict(
@@ -30,7 +30,7 @@ task_type = 'classification'  # 可选值: 'classification', 'segmentation', 'de
 # dataset settings
 dataset_type = 'CustomDataset'
 data_preprocessor = dict(
-    num_classes=1000,
+    num_classes=3,
     # RGB format normalization parameters
     mean=[123.675, 116.28, 103.53],
     std=[58.395, 57.12, 57.375],
@@ -85,7 +85,7 @@ test_evaluator = val_evaluator
 optim_wrapper = dict(
     optimizer=dict(
         type='AdamW',
-        lr=5e-4 * 1024 / 512,
+        lr=5e-5 * 1024 / 512,
         weight_decay=0.05,
         eps=1e-8,
         betas=(0.9, 0.999)),
@@ -122,7 +122,7 @@ test_cfg = dict()
 
 # NOTE: `auto_scale_lr` is for automatically scaling LR,
 # based on the actual training batch size.
-auto_scale_lr = dict(base_batch_size=1024)
+# auto_scale_lr = dict(base_batch_size=1024)
 
 # defaults to use registries in mmpretrain
 default_scope = 'mmpretrain'

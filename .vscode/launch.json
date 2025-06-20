@@ -14,13 +14,47 @@
             "justMyCode": false
         },
         {
-            "name": "Train Swin Transformer Finetune",
+            "name": "Train Swin Transformer swin_transformer_tiny",
             "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/tools/train.py",
             "args": [
                 "charCls/swin_transformer/swin_transformer_tiny_images.py",
                 "--work-dir=charCls/works/swin_transformer_tiny"
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": false,
+            "env": {
+                "OMP_NUM_THREADS": "1",
+                "MKL_NUM_THREADS": "1",
+                "PYTORCH_CUDA_ALLOC_CONF": "max_split_size_mb:32"
+            }
+        },
+        {
+            "name": "Train Swin Transformer swin_transformer_small",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/tools/train.py",
+            "args": [
+                "charCls/swin_transformer/swin_transformer_small_images.py",
+                "--work-dir=charCls/works/swin_transformer_small"
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": false,
+            "env": {
+                "OMP_NUM_THREADS": "1",
+                "MKL_NUM_THREADS": "1",
+                "PYTORCH_CUDA_ALLOC_CONF": "max_split_size_mb:32"
+            }
+        },
+        {
+            "name": "Train Swin Transformer swin_transformer_base",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/tools/train.py",
+            "args": [
+                "charCls/swin_transformer/swin_transformer_base_finetune.py",
+                "--work-dir=charCls/works/swin_transformer_base"
             ],
             "console": "integratedTerminal",
             "justMyCode": false,
@@ -60,8 +94,7 @@
             "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/charCls/inference.py",
-            "args": [
-            ],
+            "args": [],
             "console": "integratedTerminal",
             "justMyCode": false
         },
