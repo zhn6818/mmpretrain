@@ -51,7 +51,7 @@ train_dataloader = dict(
     num_workers=5,
     dataset=dict(
         type=dataset_type,
-        data_root='../data/classify/train',
+        data_root='./data/classify/train',
         pipeline=train_pipeline),
     sampler=dict(type='DefaultSampler', shuffle=True),
 )
@@ -61,7 +61,7 @@ val_dataloader = dict(
     num_workers=5,
     dataset=dict(
         type=dataset_type,
-        data_root='../data/classify/val',
+        data_root='./data/classify/val',
         pipeline=test_pipeline),
     sampler=dict(type='DefaultSampler', shuffle=False),
 )

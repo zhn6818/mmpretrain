@@ -1,0 +1,72 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Train ResNet18 Finetune",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/tools/train.py",
+            "args": [
+                "charCls/resnet18/resnet18_finetune.py",
+                "--work-dir=charCls/works/resnet18"
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": false
+        },
+        {
+            "name": "Train Swin Transformer Finetune",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/tools/train.py",
+            "args": [
+                "charCls/swin_transformer/swin_transformer_finetune.py",
+                "--work-dir=charCls/works/swin_transformer"
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": false
+        },
+        {
+            "name": "Analyze Results",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/tools/analysis_tools/analyze_results.py",
+            "args": [
+                "charCls/resnet18_finetune.py"
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": false
+        },
+        {
+            "name": "Test Model",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/tools/test.py",
+            "args": [
+                "charCls/resnet18_finetune.py",
+                "charCls/works/epoch_50.pth",
+                "--out",
+                "charCls/result.pkl"
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": false
+        },
+        {
+            "name": "Inference",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/charCls/inference.py",
+            "args": [
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": false
+        },
+        {
+            "name": "current file",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": false
+        }
+    ]
+}
