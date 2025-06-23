@@ -123,7 +123,7 @@ test_cfg = dict()
 
 # NOTE: `auto_scale_lr` is for automatically scaling LR,
 # based on the actual training batch size.
-auto_scale_lr = dict(base_batch_size=1024)
+# auto_scale_lr = dict(base_batch_size=1024)
 
 # defaults to use registries in mmpretrain
 default_scope = 'mmpretrain'
